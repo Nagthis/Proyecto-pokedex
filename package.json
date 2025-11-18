@@ -1,5 +1,6 @@
 {
   "name": "pokedex-vue",
+  "homepage": "https://nagthis.github.io/Proyecto-pokedex",
   "version": "0.0.0",
   "private": true,
   "scripts": {
