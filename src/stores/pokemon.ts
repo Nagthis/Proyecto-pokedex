@@ -21,6 +21,22 @@ export const usePokemonStore = defineStore('pokemon', {
         this.loading = false
       }
     },
+    async fetchPokemonsByType(type: string) {
+      this.loading = true
+      this.error = null
+      try {
+        if (type === 'all') {
+          await this.fetchPokemons()
+          return
+        }
+        const response = await pokeapi.get(`/type/${type}`)
+        this.pokemons = response.data.pokemon.map((p: any) => p.pokemon)
+      } catch (error: any) {
+        this.error = error.message
+      } finally {
+        this.loading = false
+      }
+    },
     async fetchPokemon(name: string) {
       this.loading = true
       this.error = null
